@@ -21,10 +21,10 @@ public class Server {
 
     public static void main(String[] args) {
         try {
-        	COLORS.add(new Color(255, 0, 0));
-        	COLORS.add(new Color(0, 255, 0));
-        	COLORS.add(new Color(0, 0, 255));
-        	COLORS.add(new Color(255, 218, 13));
+        	COLORS.add(Color.RED);
+        	COLORS.add(Color.green);
+        	COLORS.add(Color.blue);
+        	COLORS.add(Color.yellow);
         	
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Serveur en attente de connexions...");
@@ -122,6 +122,12 @@ public class Server {
         List<Color> correctColors = correctSequence.getSequence();
         List<Color> playerColors = playerMove.getPlayerSequence();
         return Arrays.equals(correctColors.toArray(), playerColors.toArray());
+    }
+    private static Color darkenColor(Color color, float factor) {
+        float[] hsbValues = new float[3];
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsbValues);
+        hsbValues[2] *= factor; // Réduire la luminosité (assombrir)
+        return new Color(Color.HSBtoRGB(hsbValues[0], hsbValues[1], hsbValues[2]));
     }
 }
     

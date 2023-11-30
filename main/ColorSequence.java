@@ -28,4 +28,5 @@ public class ColorSequence implements Serializable {
     public int getLenght() {
     	return sequence.size();
     }
+
 }
