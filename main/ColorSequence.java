@@ -3,26 +3,26 @@ package main;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.color.*;
+import java.awt.Color;
 
 public class ColorSequence implements Serializable {
     private static final long serialVersionUID = 1L;
-    private ArrayList<String> sequence;
+    private ArrayList<Color> sequence;
     private int lenght;
 
     public ColorSequence() {
         this.sequence = new ArrayList<>();
     }
-    public ColorSequence(ArrayList<String> sequence) {
+    public ColorSequence(ArrayList<Color> sequence) {
         this.sequence = sequence;
     }
 
 
-    public void addToSequence(String color) {
+    public void addToSequence(Color color) {
         sequence.add(color);
     }
 
-    public List<String> getSequence() {
+    public List<Color> getSequence() {
         return sequence;
     }
     public int getLenght() {

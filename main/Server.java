@@ -8,9 +8,10 @@ import java.net.Socket;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.awt.Color;
 
 public class Server {
-    private static final List<String> COLORS = Arrays.asList("red", "blue", "green", "yellow");
+    private static final List<Color> COLORS = new ArrayList<Color>();
     private static final int PORT = 12345;
 
     private static final ExecutorService executorService = Executors.newFixedThreadPool(10); // Nombre maximum de joueurs simultanés
@@ -20,6 +21,11 @@ public class Server {
 
     public static void main(String[] args) {
         try {
+        	COLORS.add(new Color(255, 0, 0));
+        	COLORS.add(new Color(0, 255, 0));
+        	COLORS.add(new Color(0, 0, 255));
+        	COLORS.add(new Color(255, 218, 13));
+        	
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Serveur en attente de connexions...");
 
@@ -113,8 +119,8 @@ public class Server {
     }
 
     private static boolean checkPlayerMove(ColorSequence correctSequence, PlayerMove playerMove) {
-        List<String> correctColors = correctSequence.getSequence();
-        List<String> playerColors = playerMove.getPlayerSequence();
+        List<Color> correctColors = correctSequence.getSequence();
+        List<Color> playerColors = playerMove.getPlayerSequence();
         return Arrays.equals(correctColors.toArray(), playerColors.toArray());
     }
 }
